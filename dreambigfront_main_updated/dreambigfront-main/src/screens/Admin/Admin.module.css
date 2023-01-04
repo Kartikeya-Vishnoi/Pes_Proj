@@ -1,0 +1,20 @@
+.heading{
+    font-size: 3rem;
+    display: block;
+    margin-left: 180px;
+    margin-bottom: 55px;
+    color: white;
+}
+
+.button{
+  background-color: white;
+  position: relative;
+  left: 400px;
+  display: block;
+  margin-left:46.2vw;
+  height: 3rem;
+  top: -106px;
+  margin-bottom: 1vh;
+  border-radius: 10px;
+  width: 10rem;
+}

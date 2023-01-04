@@ -1,0 +1,80 @@
+.item {
+    margin: 1rem 0;
+  }
+  
+  .image {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  
+  .image img {
+    object-fit: cover;
+  }
+  
+  .content {
+    text-align: center;
+    padding: 1rem;
+    display: flex;
+    margin-left: 175px;
+  }
+  
+  .content h3 {
+    font-size: 1.25rem;
+    color: #2c292b;
+    margin-left: 100px;
+  }
+  
+  .actions {
+    padding: 1.5rem;
+    text-align: center;
+    align-items: center;
+    margin-left: 200px;
+  }
+  
+  .actions button {
+    font: inherit;
+    cursor: pointer;
+    color: rgb(154, 9, 9);
+    background-color: #eab9ae;
+    border: 1px solid #77002e;
+    
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    margin-left: 30px;
+    align-items: center;
+    
+  }
+  .actions .button1 {
+    font: inherit;
+    cursor: pointer;
+    color: green;
+    border: 1px solid #054c29;
+    background-color: rgb(170, 232, 170);
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    margin-left: 30px;
+    align-items: center;
+    
+  }
+  
+  .actions button:hover,
+  .actions button:active {
+    background-color: #a01034;
+    color: white;
+  }
+
+  .actions .button1:hover,
+  .actions .button1:active {
+    background-color: #026921;
+    color: white;
+  }
+
+
+  .complete
+  {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }

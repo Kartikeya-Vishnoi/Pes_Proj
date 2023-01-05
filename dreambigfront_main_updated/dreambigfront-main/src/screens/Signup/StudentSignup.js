@@ -39,7 +39,9 @@ function StudentSignup(props) {
             password:password.current.value,
             timestamp:serverTimestamp(),
             status:"Pending",
-            bool:-1
+            bool:-1,
+            quiz:0,
+            result:-1
         }).then(
           await setDoc(doc(db,"userChats",res.user.uid),{}),
           navigate("/")

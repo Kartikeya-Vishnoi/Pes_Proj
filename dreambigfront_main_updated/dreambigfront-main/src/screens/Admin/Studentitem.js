@@ -1,19 +1,18 @@
 import { getAuth } from "firebase/auth";
-import { addDoc, doc, setDoc,getDoc,updateDoc } from "firebase/firestore";
+import { addDoc, doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
 import { serverTimestamp } from "firebase/firestore";
 import { useContext } from "react";
 import { db } from "../../Firebase";
 import Card from "../../ui/Card";
-import {ChatContext} from "../../store/ChatContext"
+import { ChatContext } from "../../store/ChatContext";
 import classes from "./Studentitem.module.css";
 import { useNavigate } from "react-router-dom";
 
-
 function Studentitem(props) {
-  const auth=getAuth();
-  const navigate=useNavigate()
-  const currentuser=auth.currentUser;
-  const {dispatch} =useContext(ChatContext);
+  const auth = getAuth();
+  const navigate = useNavigate();
+  const currentuser = auth.currentUser;
+  const { dispatch } = useContext(ChatContext);
 
   async function chathandler() {
     const combinedId =
@@ -41,11 +40,11 @@ function Studentitem(props) {
         });
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-    dispatch({type:"CHANGE_USER",payload:props})
-    console.log(props.userInfo)
-    navigate("/chat")
+    dispatch({ type: "CHANGE_USER", payload: props });
+    console.log(props.userInfo);
+    navigate("/chat");
   }
 
   async function Accepted() {
@@ -55,15 +54,18 @@ function Studentitem(props) {
       highschool: props.highschool,
       image: props.image,
       password: props.password,
-      status: "Congratulations You are Selected!!!",
+      status: "Congratulations You are eligible to take on the quiz!!!",
       studentname: props.name,
       timestamp: props.time,
       twelth: props.PUC,
       email: props.email,
-      bool:1
+      bool: 1,
+      result: -1,
+      quiz: true,
     };
-    setDoc(docRef,payload);
+    setDoc(docRef, payload);
   }
+
   function Rejected() {
     const docRef = doc(db, "students", props.id);
     const payload = {
@@ -76,29 +78,41 @@ function Studentitem(props) {
       timestamp: props.time,
       twelth: props.PUC,
       email: props.email,
-      bool:0
+      bool: 0,
+      result: -1,
+      quiz: false,
     };
-    setDoc(docRef,payload);
+    setDoc(docRef, payload);
   }
   return (
     <li className={classes.item}>
       <Card>
         <div className={classes.complete}>
-        <div className={classes.image}>
-          <img src={props.image} alt={props.title}></img>
-        </div>
-        <div className={classes.content}>
-          <h3>{props.name}</h3>
-          <h3>{props.highschool}</h3>
-          <h3>{props.PUC}</h3>
-        </div>
-        <div className={classes.actions}>
-          <button onClick={Accepted} className={classes.button1}>Accept</button>
-          <button onClick={Rejected}>
-            Reject
-          </button>
-          <button onClick={chathandler} className={classes.button1}>Chat</button>
-        </div>
+          <div className={classes.image}>
+            <img src={props.image} alt={props.title}></img>
+          </div>
+          <div className={classes.content}>
+            <h3>{props.name}</h3>
+            <h3>PUC: {props.PUC}%</h3>
+            <h3>High School: {props.highschool}%</h3>
+          </div>
+          <div className={classes.actions}>
+            {props.quiz===true && props.result===-1 && <div className={classes.pending}>Result Pending...</div>}
+            {props.quiz===0 && props.result===-1 && <>
+                <div className={classes.initial}>
+                <button onClick={Accepted} className={classes.button1}>
+                  Accept
+                </button>
+                <button onClick={Rejected} className={classes.button2}>Reject</button>
+                </div>
+              </>}
+              {props.quiz===true && props.result===1 && <div className={classes.status1}>Qualified Quiz</div>}
+              {props.quiz===true && props.result===0 && <div className={classes.status2}>Failed Quiz</div>}
+              {props.result===1 && <button onClick={chathandler} className={classes.button1}>
+              Chat
+            </button>}
+            {/* <button onClick={Approve} className={classes.button1}>Quiz</button> */}
+          </div>
         </div>
       </Card>
     </li>

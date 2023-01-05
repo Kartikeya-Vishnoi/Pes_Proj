@@ -7,7 +7,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles"
 import Landing from "./screens/Landing/Landing"
 import AdminLogin from './screens/Login/AdminLogin';
 import StudentLogin from './screens/Login/StudentLogin';
-// import Select from "./screens/Selection Page/Select"
+import Main from './screens/Quiz/Components/Main';
 import Crowdfunding from './screens/User/Crowdfunding';
 import Guide from './components/Guide';
 import Displaycards from './screens/Finance/displaycards';
@@ -21,6 +21,9 @@ import StudentSignup from './screens/Signup/StudentSignup';
 import Student from './screens/Student/Student';
 import Chat from './screens/Chat/Chat';
 import Productform from './components/Form';
+import Quiz from "../src/screens/Quiz/Components/Quiz"
+import Result from "../src/screens/Quiz/Components/Result"
+
 const theme = createTheme({
   typography: {
     allVariants: {
@@ -67,7 +70,9 @@ function App() {
               <Route path='crowdfunding' element={<Crowdfunding />} />
               <Route path='chat' element={<Chat />} />
               <Route path='form' element={<Productform />} />
-
+              <Route path='main' element={<Main />} />
+              <Route path='main/quiz' element={<Quiz />} />
+              <Route path='result' element={<Result />} />
             </Routes>
           </div>
         </UserContext.Provider>

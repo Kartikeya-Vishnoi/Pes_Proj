@@ -73,7 +73,7 @@ function Studentitem(props) {
       highschool: props.highschool,
       image: props.image,
       password: props.password,
-      status: "You are Rejected....Try Next Time",
+      status: "You are not eligible to attend the Quiz...",
       studentname: props.name,
       timestamp: props.time,
       twelth: props.PUC,

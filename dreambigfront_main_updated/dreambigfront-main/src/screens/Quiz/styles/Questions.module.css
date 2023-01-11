@@ -1,0 +1,43 @@
+h2{
+    color: white;
+    font-size:2.5rem;
+    margin-left:40px;
+    margin-top: 100px;
+}
+
+.qusetions li{
+    list-style-type: style;
+    color: white;
+    margin-left: 20px;
+    size: 5.0;
+}
+
+.questions ul{
+    margin-left: 40px;
+    margin-top: 50px;
+    font-size: 2.0rem;
+}
+
+.btn{
+    display: inline-block;
+    background-color: var(--color-primary);
+    font-size: 1.6rem;
+    font-family: inherit;
+    font-weight: 500;
+    border: none;
+    padding: 1.25rem 4.5rem;
+    border-radius: 10rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 220px;
+    margin-right: 110px;
+    margin-left: 45px;
+}
+.blank{
+    display: inline-block;
+}
+.grid{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

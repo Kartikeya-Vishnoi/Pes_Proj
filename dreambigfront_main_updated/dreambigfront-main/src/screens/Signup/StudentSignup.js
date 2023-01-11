@@ -35,7 +35,7 @@ function StudentSignup(props) {
             email:email.current.value,
             highschool:tenth.current.value,
             twelth:twelth.current.value,
-            image:img.current.value,
+            image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEidraPhmCDVkOsdFzkhtvO8TXj2_1ukhLZw&usqp=CAU",
             password:password.current.value,
             timestamp:serverTimestamp(),
             status:"Pending",
@@ -146,7 +146,7 @@ function StudentSignup(props) {
                     ref={twelth}
                   />
                 </div>
-                <div className='bg-gray-200 w-64 p-2 flex items-center mb-3'>
+                {/* <div className='bg-gray-200 w-64 p-2 flex items-center mb-3'>
                   
                   <input
                     type='text'
@@ -155,7 +155,7 @@ function StudentSignup(props) {
                     className='outline-none text-md flex-1'
                     ref={img}
                   />
-                </div>
+                </div> */}
                 <div className='bg-gray-200 w-64 p-2 flex items-center mb-3'>
                   {/* <MdLockOutline className='text-slate-700 m-2 ml-1' /> */}
                   <input

@@ -7,6 +7,7 @@ import { PushAnswer } from '../hooks/setResult';
 /** redux store import */
 import { useSelector, useDispatch } from 'react-redux'
 import { Navigate } from 'react-router-dom'
+import classes from "../styles/Questions.module.css"
 
 export default function Quiz() {
 
@@ -51,14 +52,13 @@ export default function Quiz() {
 
   return (
     <div className='container'>
-        <h1 className='title text-light'>Quiz Application</h1>
 
         {/* display questions */}
         <Questions onChecked={onChecked} />
 
-        <div className='grid'>
-            { trace > 0 ? <button className='btn prev' onClick={onPrev}>Prev</button> : <div></div>}
-            <button className='btn next' onClick={onNext}>Next</button>
+        <div className={classes.grid}>
+            { trace > 0 ? <button onClick={onPrev} className={classes.btn}>Prev</button> : ""}
+            <button className={classes.btn} onClick={onNext}>Next</button>
         </div>
     </div>
   )

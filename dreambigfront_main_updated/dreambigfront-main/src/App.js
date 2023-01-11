@@ -11,7 +11,7 @@ import Main from './screens/Quiz/Components/Main';
 import Crowdfunding from './screens/User/Crowdfunding';
 import Guide from './components/Guide';
 import Displaycards from './screens/Finance/displaycards';
-import VC from './screens/User/VC';
+// import VC from './screens/User/VC';
 import Course from './screens/course/course';
 import Jobs from './recruit/components/Jobs';
 import DisplaycardsB from './screens/business/displaycards';
@@ -23,6 +23,7 @@ import Chat from './screens/Chat/Chat';
 import Productform from './components/Form';
 import Quiz from "../src/screens/Quiz/Components/Quiz"
 import Result from "../src/screens/Quiz/Components/Result"
+import Peerjs from './screens/video_chat/peer';
 
 const theme = createTheme({
   typography: {
@@ -61,7 +62,7 @@ function App() {
               <Route path='adminlogin' element={<AdminLogin />} />
               <Route path='studentsignup' element={<StudentSignup />} />
               <Route path='student' element={<Student/>} />
-              {/* <Route path='map' element={<Map />} /> */}
+              <Route path='video' element={<Peerjs/>} />
               <Route path='business' element={<DisplaycardsB />} />
               <Route path='admin' element={< Admin/>} />
               <Route path='guide' element={<Guide />} />

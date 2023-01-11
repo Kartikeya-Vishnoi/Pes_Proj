@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 /** Custom Hook */
 import { useFetchQestion } from '../hooks/FetchQuestion'
 import { updateResult } from '../hooks/setResult'
-
+import styles from "../styles/Questions.module.css"
 
 export default function Questions({ onChecked }) {
 
@@ -32,8 +32,8 @@ export default function Questions({ onChecked }) {
     if(serverError) return <h3 className='text-light'>{serverError || "Unknown Error"}</h3>
 
   return (
-    <div className='questions'>
-        <h2 className='text-light'>{questions?.question}</h2>
+    <div className={styles.questions}>
+        <h2 className={styles.question}>{questions?.question}</h2>
 
         <ul key={questions?.id}>
             {

@@ -88,7 +88,7 @@ function Student() {
   return (
     <>
       <div className={classes.heading}>
-        <p className={classes.name}>Hi {name}</p>
+        <p className={classes.name}>Welcome {name}</p>
         <div className={classes.image}>
           <img src={img} alt={name}></img>
         </div>

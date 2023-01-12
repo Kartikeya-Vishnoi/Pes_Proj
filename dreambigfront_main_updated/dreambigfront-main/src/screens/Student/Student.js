@@ -28,6 +28,10 @@ function Student() {
   const currentuser = auth.currentUser;
   const obj = { id: "NGbv1gMH11NJQ8NNtjeQsyw51k53" };
 
+  function Interview(){
+    navigate("/video")
+  }
+
   async function chathandler() {
     const combinedId =
       currentuser.uid > obj.id
@@ -101,7 +105,7 @@ function Student() {
         "Loading"
       ) : quiz === true && result === -1 ? (
         <button
-          className={classes.button}
+          className={classes.button2}
           onClick={() => {
             navigate("/main");
           }}
@@ -112,9 +116,13 @@ function Student() {
         ""
       )}
       {result === 1 ? (
+        <div className={classes.container}>
         <button className={classes.button} onClick={chathandler}>
           Contact Admin
         </button>
+        <div className={classes.text}>Start your Interview at the alloted time by pressing the Button Below</div>
+        <button className={classes.button1} onClick={Interview}>Start Interview</button>
+        </div>
       ) : (
         ""
       )}

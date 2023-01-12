@@ -52,14 +52,15 @@ function Peerjs() {
 
   return (
     <div className={classes.App}>
-      <h1>Current user id is {peerId}</h1>
+      <h2>Current user id is {peerId}</h2>
       <input type="text" value={remotePeerIdValue} onChange={e => setRemotePeerIdValue(e.target.value)} />
       <button onClick={() => call(remotePeerIdValue)}>Call</button>
-      <div>
+      <div className={classes.wrap}>
         <video ref={currentUserVideoRef} />
-      </div>
+        {/* <h2 ref={remoteVideoRef} className={classes.bt1} > sdfds</h2> */}
       <div>
         <video ref={remoteVideoRef} />
+      </div>
       </div>
     </div>
   );

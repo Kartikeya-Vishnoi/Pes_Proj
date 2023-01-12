@@ -20,10 +20,16 @@ function Admin(){
     return () => unsubscribe();
   }, []);
   console.log(loadedstuds);
+  
+  function Interview(){
+    navigate("/video")
+  }
   // console.log(loadedstuds.length)
 return (
     <>
+
     <h1 className={classes.heading}>Students List</h1>
+    <button className={classes.button} onClick={Interview}>Take Interview</button>
     {/* <button className={classes.button} onClick={() => {navigate("/chat")}}>Go to Chatroom</button> */}
     <Studentlist list={loadedstuds}/>
     </>

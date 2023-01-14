@@ -15,7 +15,7 @@ function Peerjs() {
     peer.on('open', (id) => {
       setPeerId(id)
     });
-
+    try{
     peer.on('call', (call) => {
       var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
@@ -29,13 +29,17 @@ function Peerjs() {
         });
       });
     })
-
+  }
+  catch(e){
+    console.log(e)
+  }
     peerInstance.current = peer;
   }, [])
 
   const call = (remotePeerId) => {
+    
     var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-
+    try{
     getUserMedia({ video: true, audio: true }, (mediaStream) => {
 
       currentUserVideoRef.current.srcObject = mediaStream;
@@ -49,6 +53,10 @@ function Peerjs() {
       });
     });
   }
+  catch(e){
+    console.log(e)
+  }
+  }
 
   return (
     <div className={classes.App}>
@@ -56,13 +64,10 @@ function Peerjs() {
       <input type="text" value={remotePeerIdValue} onChange={e => setRemotePeerIdValue(e.target.value)} />
       <button onClick={() => call(remotePeerIdValue)}>Call</button>
       <div className={classes.wrap}>
-        <video ref={currentUserVideoRef} />
-        {/* <h2 ref={remoteVideoRef} className={classes.bt1} > sdfds</h2> */}
-      <div>
-        <video ref={remoteVideoRef} />
+        <video ref={currentUserVideoRef} className={classes.video}/>
+        <video ref={remoteVideoRef} className={classes.video}/>
+        </div>
       </div>
-      </div>
-    </div>
   );
 }
 

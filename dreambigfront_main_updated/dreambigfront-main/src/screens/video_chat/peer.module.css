@@ -2,9 +2,12 @@
     text-align: center;
   }
   
-  .App video{
+  .video{
     height: 300px;
     width: 500px;
+    z-index: 0;
+    position: relative;
+    object-fit: none;
   }
 
   
@@ -25,6 +28,8 @@
   
 .wrap{
   display: flex;
+  position: relative;
+  justify-content: space-around;
   flex-direction: row;
   justify-items: flex-end;
 }

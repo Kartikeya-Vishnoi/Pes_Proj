@@ -13,7 +13,7 @@ export default function Main() {
 
   return (
     <div className={styles.container}>
-        <h1 className={styles.title}>Quiz Application</h1>
+        <h1 className={styles.title}>Admission Quiz</h1>
 
         <ol className={styles.list}>
             <li>You will be asked 10 questions one after another.</li>

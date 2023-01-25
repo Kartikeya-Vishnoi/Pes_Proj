@@ -99,7 +99,7 @@ const Quiz = () => {
         >
           {activeQuestion === questions.length - 1 ? (
            ! submit ? (
-              "Finish"
+              "Submit and Finish"
             ) : (
               <div className={classes.oval}>
               <Oval height={80} width={80} color="white" wrapperStyle={{}} wrapperClass="white" visible={true} ariaLabel="oval-loading" secondaryColor="white" strokeWidth={5} strokeWidthSecondary={6}/>

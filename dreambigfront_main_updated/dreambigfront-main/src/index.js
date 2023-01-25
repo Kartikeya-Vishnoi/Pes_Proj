@@ -2,19 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { ChatContextProvider } from './store/ChatContext';
+import { QuizContextProvider } from './store/QuizContext';
 import { AuthContextProvider } from './store/AuthContext';
-import store from "../src/screens/Quiz/redux/store"
-import { Provider } from 'react-redux';
-
+import { VideocontextProvider } from './store/VideoContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <QuizContextProvider>
+    <VideocontextProvider>
     <AuthContextProvider>
     <ChatContextProvider>
-    <Provider store={store}>
     <App />
-    </Provider>
     </ChatContextProvider>
     </AuthContextProvider>
+    </VideocontextProvider>
+    </QuizContextProvider>
   </React.StrictMode>
 );

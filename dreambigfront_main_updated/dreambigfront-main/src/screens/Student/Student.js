@@ -15,6 +15,8 @@ import { serverTimestamp } from "firebase/firestore";
 import { auth } from "../../Firebase";
 import { useNavigate } from "react-router-dom";
 import { ChatContext } from "../../store/ChatContext";
+import { QuizContext } from "../../store/QuizContext";
+
 function Student() {
   const [status, setStatus] = useState([]);
   const [name, setName] = useState([]);
@@ -22,14 +24,15 @@ function Student() {
   const [bl, setbl] = useState([]);
   const [quiz, setQuiz] = useState(null);
   const [result, setResult] = useState();
+  const ctx=useContext(QuizContext);
   const { dispatch } = useContext(ChatContext);
   const navigate = useNavigate();
   const auth = getAuth();
   const currentuser = auth.currentUser;
   const obj = { id: "NGbv1gMH11NJQ8NNtjeQsyw51k53" };
-
+  
   function Interview(){
-    navigate("/video")
+    navigate("/studentvideo")
   }
 
   async function chathandler() {
@@ -85,6 +88,9 @@ function Student() {
       setbl(Status[0].bool);
       setQuiz(Status[0].quiz);
       setResult(Status[0].result);
+      console.log(Status[0].course);
+      ctx.type=Status[0].course;
+      console.log(ctx.type)
       console.log(result);
     });
     return () => unsubscribe();

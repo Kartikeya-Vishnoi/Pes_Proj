@@ -7,6 +7,7 @@ import Card from "../../ui/Card";
 import { ChatContext } from "../../store/ChatContext";
 import classes from "./Studentitem.module.css";
 import { useNavigate } from "react-router-dom";
+import { Videocontext } from "../../store/VideoContext";
 
 function Studentitem(props) {
   const auth = getAuth();
@@ -59,6 +60,7 @@ function Studentitem(props) {
       timestamp: props.time,
       twelth: props.PUC,
       email: props.email,
+      course:props.course,
       bool: 1,
       result: -1,
       quiz: true,
@@ -76,6 +78,7 @@ function Studentitem(props) {
       status: "You are not eligible to attend the Quiz...",
       studentname: props.name,
       timestamp: props.time,
+      course:props.course,
       twelth: props.PUC,
       email: props.email,
       bool: 0,
@@ -84,9 +87,19 @@ function Studentitem(props) {
     };
     setDoc(docRef, payload);
   }
+  const ctx=useContext(Videocontext)
   return (
     <li className={classes.item}>
       <Card>
+        <div className={classes.space}>
+          <img
+            src="http://cdn.onlinewebfonts.com/svg/img_503190.png"
+            className={classes.vid}
+            onClick={() => {
+              ctx.vididhandler(props.id)
+              navigate("/adminvideo")}}
+          ></img>
+        </div>
         <div className={classes.complete}>
           <div className={classes.image}>
             <img src={props.image} alt={props.title}></img>
@@ -97,20 +110,32 @@ function Studentitem(props) {
             <h3>High School: {props.highschool}%</h3>
           </div>
           <div className={classes.actions}>
-            {props.quiz===true && props.result===-1 && <div className={classes.pending}>Result Pending...</div>}
-            {props.quiz===0 && props.result===-1 && <>
+            {props.quiz === true && props.result === -1 && (
+              <div className={classes.pending}>Result Pending...</div>
+            )}
+            {props.quiz === 0 && props.result === -1 && (
+              <>
                 <div className={classes.initial}>
-                <button onClick={Accepted} className={classes.button1}>
-                  Accept
-                </button>
-                <button onClick={Rejected} className={classes.button2}>Reject</button>
+                  <button onClick={Accepted} className={classes.button1}>
+                    Accept
+                  </button>
+                  <button onClick={Rejected} className={classes.button2}>
+                    Reject
+                  </button>
                 </div>
-              </>}
-              {props.quiz===true && props.result===1 && <div className={classes.status1}>Qualified Quiz</div>}
-              {props.quiz===true && props.result===0 && <div className={classes.status2}>Failed Quiz</div>}
-              {props.result===1 && <button onClick={chathandler} className={classes.button1}>
-              Chat
-            </button>}
+              </>
+            )}
+            {props.quiz === true && props.result === 1 && (
+              <div className={classes.status1}>Qualified Quiz</div>
+            )}
+            {props.quiz === true && props.result === 0 && (
+              <div className={classes.status2}>Failed Quiz</div>
+            )}
+            {props.result === 1 && (
+              <button onClick={chathandler} className={classes.button1}>
+                Chat
+              </button>
+            )}
             {/* <button onClick={Approve} className={classes.button1}>Quiz</button> */}
           </div>
         </div>

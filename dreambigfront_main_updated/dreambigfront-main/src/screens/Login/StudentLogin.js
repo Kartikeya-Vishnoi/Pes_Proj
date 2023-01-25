@@ -74,7 +74,7 @@ function StudentLogin() {
               <span className="text-2xl">Step-Up</span>
               <span className="text-1xl font-bold text-yellow-500">+</span>
             </div>
-            <div className="py-5">
+            <div className="py-0">
               <h2 className="text-3xl text-yellow-400 font-bold mb-2">
                 Log in to your Account
               </h2>

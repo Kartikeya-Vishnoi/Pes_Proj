@@ -16,6 +16,7 @@ function Studentlist(props){
           time={student.timestamp}
           quiz={student.quiz}
           result={student.result}
+          course={student.course}
         />
       ))}
         </ul>

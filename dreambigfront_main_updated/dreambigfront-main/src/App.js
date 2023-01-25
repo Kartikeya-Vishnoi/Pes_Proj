@@ -7,7 +7,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles"
 import Landing from "./screens/Landing/Landing"
 import AdminLogin from './screens/Login/AdminLogin';
 import StudentLogin from './screens/Login/StudentLogin';
-import Main from './screens/Quiz/Components/Main';
+import Main from "./screens/Quiz/Main";
 import Crowdfunding from './screens/User/Crowdfunding';
 import Guide from './components/Guide';
 import Displaycards from './screens/Finance/displaycards';
@@ -21,9 +21,10 @@ import StudentSignup from './screens/Signup/StudentSignup';
 import Student from './screens/Student/Student';
 import Chat from './screens/Chat/Chat';
 import Productform from './components/Form';
-import Quiz from "../src/screens/Quiz/Components/Quiz"
-import Result from "../src/screens/Quiz/Components/Result"
 import Peerjs from './screens/video_chat/peer';
+import Studentvideo from './screens/video_chat/studentvideo';
+import Adminvideo from './screens/video_chat/adminvideo';
+import Quiz from './screens/Quiz/quiz';
 
 const theme = createTheme({
   typography: {
@@ -63,6 +64,8 @@ function App() {
               <Route path='studentsignup' element={<StudentSignup />} />
               <Route path='student' element={<Student/>} />
               <Route path='video' element={<Peerjs/>} />
+              <Route path='adminvideo' element={<Adminvideo/>} />
+              <Route path='studentvideo' element={<Studentvideo/>} />
               <Route path='business' element={<DisplaycardsB />} />
               <Route path='admin' element={< Admin/>} />
               <Route path='guide' element={<Guide />} />
@@ -72,8 +75,7 @@ function App() {
               <Route path='chat' element={<Chat />} />
               <Route path='form' element={<Productform />} />
               <Route path='main' element={<Main />} />
-              <Route path='main/quiz' element={<Quiz />} />
-              <Route path='result' element={<Result />} />
+              <Route path='quiz' element={<Quiz />} />
             </Routes>
           </div>
         </UserContext.Provider>

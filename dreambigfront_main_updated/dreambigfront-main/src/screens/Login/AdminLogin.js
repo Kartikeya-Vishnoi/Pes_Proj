@@ -2,6 +2,7 @@ import { Alert, Snackbar } from "@mui/material";
 import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../Firebase";
+import { RotatingLines } from "react-loader-spinner";
 // import { AuthContext } from "../store/AuthContext";
 import {
   FaFacebook,
@@ -21,11 +22,12 @@ function AdminLogin(props) {
   const [invalidUser, setInvalidUser] = useState(false);
   const [email, setEmail]= useState("");
   const [password,setPassword]=useState("");
-  const {dispatch} =useContext(AuthContext)
-  
+  const {dispatch} =useContext(AuthContext);
+  const [isloading, setIsloading] = useState(false);
+  const [wrong, setIsWrong] = useState(false);
   const handleLogin = (e) => {
     e.preventDefault();
-
+    setIsloading(true);
     signInWithEmailAndPassword(
       auth,
       email,
@@ -45,6 +47,7 @@ function AdminLogin(props) {
         console.log(email);
         console.log(password);
         console.log(e);
+        setIsWrong(true);
       });
     // navigate("/funding")
     // const form = e.target
@@ -79,7 +82,7 @@ function AdminLogin(props) {
               <span className="text-2xl">Step-Up</span>
               <span className="text-1xl font-bold text-yellow-500">+</span>
             </div>
-            <div className="py-0">
+            <div className="py-12">
               <h2 className="text-3xl text-yellow-400 font-bold mb-2">
                 Log in to your Account
               </h2>
@@ -141,13 +144,26 @@ function AdminLogin(props) {
                   />
                 </div>
 
-                <button
+                {!wrong && isloading ? (
+                  <div style={{"margin-left":"100px"}}>
+                  <RotatingLines
+                    strokeColor="white"
+                    strokeWidth="5"
+                    animationDuration="0.5"
+                    width="70"
+                    visible={true}
+                  />
+                  </div>
+                ):
+                  <button
                   type="submit"
                   value="submit"
                   className="border-2 border-yellow-400 text-yellow-400 rounded-full px-12 py-2 inline-block font-semibold hover:bg-yellow-400 hover:text-black"
                 >
                   Log In
                 </button>
+                }
+                {wrong && <div style={{color:"red", "margin-top": "10px"}}>** Wrong Email-Id or Password</div>}
               </form>
             </div>
 

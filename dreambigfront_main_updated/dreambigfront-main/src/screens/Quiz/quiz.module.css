@@ -12,13 +12,13 @@
 }
 
 .quizcontainer {
-  max-width: 500px;
+  max-width: 700px;
   min-width: 250px;
   background: #ffffff;
   border-radius: 4px;
   margin-top: 100px;
   padding: 30px 60px;
-  margin-left: 33vw;
+  margin-left: 30vw;
   margin-top: 20vh;
 }
 

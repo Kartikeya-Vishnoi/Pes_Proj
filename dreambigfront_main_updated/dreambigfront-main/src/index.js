@@ -5,6 +5,7 @@ import { ChatContextProvider } from './store/ChatContext';
 import { QuizContextProvider } from './store/QuizContext';
 import { AuthContextProvider } from './store/AuthContext';
 import { VideocontextProvider } from './store/VideoContext';
+import { SocketContextProvider } from './store/SocketContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -12,7 +13,9 @@ root.render(
     <VideocontextProvider>
     <AuthContextProvider>
     <ChatContextProvider>
+    <SocketContextProvider>
     <App />
+    </SocketContextProvider>
     </ChatContextProvider>
     </AuthContextProvider>
     </VideocontextProvider>

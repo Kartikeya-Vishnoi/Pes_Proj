@@ -21,10 +21,8 @@ import StudentSignup from './screens/Signup/StudentSignup';
 import Student from './screens/Student/Student';
 import Chat from './screens/Chat/Chat';
 import Productform from './components/Form';
-import Peerjs from './screens/video_chat/peer';
-import Studentvideo from './screens/video_chat/studentvideo';
-import Adminvideo from './screens/video_chat/adminvideo';
 import Quiz from './screens/Quiz/quiz';
+import InterviewApp from './screens/Interview/InterviewApp';
 
 const theme = createTheme({
   typography: {
@@ -63,9 +61,6 @@ function App() {
               <Route path='adminlogin' element={<AdminLogin />} />
               <Route path='studentsignup' element={<StudentSignup />} />
               <Route path='student' element={<Student/>} />
-              <Route path='video' element={<Peerjs/>} />
-              <Route path='adminvideo' element={<Adminvideo/>} />
-              <Route path='studentvideo' element={<Studentvideo/>} />
               <Route path='business' element={<DisplaycardsB />} />
               <Route path='admin' element={< Admin/>} />
               <Route path='guide' element={<Guide />} />
@@ -76,6 +71,7 @@ function App() {
               <Route path='form' element={<Productform />} />
               <Route path='main' element={<Main />} />
               <Route path='quiz' element={<Quiz />} />
+              <Route path='interview' element={<InterviewApp />} />
             </Routes>
           </div>
         </UserContext.Provider>

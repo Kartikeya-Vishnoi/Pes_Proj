@@ -103,7 +103,7 @@ function StudentSignup(props) {
               <span className="text-2xl">Step-Up</span>
               <span className="text-1xl font-bold text-yellow-500">+</span>
             </div>
-            <div className="py-0">
+            <div className="py-7">
               <h2 className="text-3xl text-yellow-400 font-bold mb-2">
                 Sign Up your Account
               </h2>
@@ -188,7 +188,7 @@ function StudentSignup(props) {
                     style={{ width: "inherit", color: "grey" }}
                   >
                     {options.map((option) => (
-                      <option value={option.value}>{option.label}</option>
+                      <option value={option.value} style={{color: "black"}}>{option.label}</option>
                     ))}
                   </select>
                 </div>

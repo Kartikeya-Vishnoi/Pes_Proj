@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../store/AuthContext";
-
+import { RotatingLines } from "react-loader-spinner";
 
 function StudentLogin() {
   const navigate = useNavigate();
@@ -22,10 +22,11 @@ function StudentLogin() {
   const [email, setEmail]= useState("");
   const [password,setPassword]=useState("");
   const {dispatch}= useContext(AuthContext);
-  
+  const [isloading, setIsloading] = useState(false);
+
   const handleLogin = (e) => {
     e.preventDefault();
-
+    setIsloading(true);
     signInWithEmailAndPassword(
       auth,
       email,
@@ -74,7 +75,7 @@ function StudentLogin() {
               <span className="text-2xl">Step-Up</span>
               <span className="text-1xl font-bold text-yellow-500">+</span>
             </div>
-            <div className="py-0">
+            <div className="py-12">
               <h2 className="text-3xl text-yellow-400 font-bold mb-2">
                 Log in to your Account
               </h2>
@@ -135,7 +136,17 @@ function StudentLogin() {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
-
+                {isloading ? (
+                  <div style={{"margin-left":"100px"}}>
+                  <RotatingLines
+                    strokeColor="white"
+                    strokeWidth="5"
+                    animationDuration="0.5"
+                    width="70"
+                    visible={true}
+                  />
+                  </div>
+                ):
                 <button
                   type="submit"
                   value="submit"
@@ -143,6 +154,7 @@ function StudentLogin() {
                 >
                   Log In
                 </button>
+                }
               </form>
             </div>
 

@@ -3,7 +3,8 @@ import { Grid, makeStyles, Paper, Typography } from "@material-ui/core";
 import { useContext } from "react";
 import { SocketContext } from '../../store/SocketContext';
 import styles from "./VideoPlayer.module.css"
-
+import Card from "../../ui/Card1"
+import CARD from "../../ui/Card2";
 const useStyles = makeStyles((theme) => ({
 
   gridContainer: {
@@ -26,25 +27,9 @@ const VideoPlayer = () => {
   const { name, callAccepted, myVideo, userVideo, callEnded, stream, call } =
     useContext(SocketContext);
   return (
-    <Grid container className={classes.gridContainer}>
-      {stream && (
-            <>
-            <Typography variant="h5" gutterBottom>
-              {name || "Name"}
-            </Typography>
-            <video
-              playsInline
-              muted
-              ref={myVideo}
-              autoPlay
-              className={styles.video}
-            />
-            </>
-      )}
-
-      {callAccepted && !callEnded && (
-        <>
-          
+  <div className={styles.cont}>
+    {callAccepted && !callEnded && (
+        <CARD>
             <Typography variant="h5" gutterBottom>
               {call.name || "Name"}
             </Typography>
@@ -54,10 +39,25 @@ const VideoPlayer = () => {
               autoPlay
               className={styles.video}
             />
-  
-        </>
+        </CARD>
       )}
-    </Grid>
+      {stream && (
+            <Card accepted={callAccepted} end={callEnded}>
+            <Typography variant="h5" gutterBottom style={{"margin-left":"14vw"}}>
+              {name || "Name"}
+            </Typography>
+            <video
+              playsInline
+              muted
+              ref={myVideo}
+              autoPlay
+              className={styles.video1}
+            />
+            </Card>
+      )}
+   
+      
+</div>
   );
 };
 

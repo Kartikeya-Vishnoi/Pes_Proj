@@ -16,6 +16,7 @@ import { auth } from "../../Firebase";
 import { useNavigate } from "react-router-dom";
 import { ChatContext } from "../../store/ChatContext";
 import { QuizContext } from "../../store/QuizContext";
+import Modal from "./Modal";
 
 function Student() {
   const [status, setStatus] = useState([]);
@@ -30,9 +31,11 @@ function Student() {
   const auth = getAuth();
   const currentuser = auth.currentUser;
   const obj = { id: "NGbv1gMH11NJQ8NNtjeQsyw51k53" };
+  const [modal, setModal] =useState(false);
   
   function Interview(){
-    navigate("/studentvideo")
+    // navigate("/studentvideo");
+    setModal(true);
   }
 
   async function chathandler() {
@@ -95,6 +98,8 @@ function Student() {
     });
     return () => unsubscribe();
   }, []);
+
+
   return (
     <>
       <div className={classes.heading}>
@@ -127,6 +132,7 @@ function Student() {
           Contact Admin
         </button>
         <div className={classes.text}>Start your Interview at the alloted time by pressing the Button Below</div>
+        <Modal modal={modal} closemodal={() => {setModal(false)}}/>
         <button className={classes.button1} onClick={Interview}>Start Interview</button>
         </div>
       ) : (

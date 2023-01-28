@@ -34,15 +34,17 @@ const useStyles = makeStyles((theme) => ({
  function InterviewApp(){
   const classes = useStyles();
   return(
-    <div className={styles.body} style={{height:"90vh"}}>
+    <div className={styles.body} style={{height:"140vh"}}>
     <div className={classes.wrapper}>
       <AppBar className={classes.appBar} position="static" color="inherit">
       <Typography variant="h2" align="center">Video Chat</Typography>
       </AppBar>
       <VideoPlayer/>
+      <div style={{"margin-top": "80px"}}>
       <Options>
         <Notificaitons />
       </Options>
+      </div>
     </div>
     </div>
   );

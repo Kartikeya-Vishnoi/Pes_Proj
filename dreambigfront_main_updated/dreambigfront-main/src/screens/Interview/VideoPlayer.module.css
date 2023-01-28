@@ -1,6 +1,10 @@
 .video{
-    height: 500px;
     z-index: 0;
-    width:600px;
-    
+    position: relative;
 }
+
+.video1{
+    z-index: 0;
+    position: relative;
+}
+

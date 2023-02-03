@@ -13,9 +13,7 @@ root.render(
     <VideocontextProvider>
     <AuthContextProvider>
     <ChatContextProvider>
-    <SocketContextProvider>
-    <App />
-    </SocketContextProvider>
+    <App />    
     </ChatContextProvider>
     </AuthContextProvider>
     </VideocontextProvider>

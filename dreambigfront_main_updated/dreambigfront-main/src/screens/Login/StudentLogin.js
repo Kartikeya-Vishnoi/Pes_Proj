@@ -34,6 +34,7 @@ function StudentLogin() {
     )
       .then((userCredential) => {
         const user = userCredential.user;
+        localStorage.setItem('user', userCredential.user)
         dispatch({type:"LOGIN", payload:user})
         navigate("/student");
       })

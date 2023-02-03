@@ -23,6 +23,7 @@ import Chat from './screens/Chat/Chat';
 import Productform from './components/Form';
 import Quiz from './screens/Quiz/quiz';
 import InterviewApp from './screens/Interview/InterviewApp';
+import { SocketContextProvider } from './store/SocketContext';
 
 const theme = createTheme({
   typography: {
@@ -62,7 +63,7 @@ function App() {
               <Route path='studentsignup' element={<StudentSignup />} />
               <Route path='student' element={<Student/>} />
               <Route path='business' element={<DisplaycardsB />} />
-              <Route path='admin' element={< Admin/>} />
+              <Route path='admin' element={< Admin/>}/>
               <Route path='guide' element={<Guide />} />
               <Route path='jobportal' element={<Jobs />} />
               <Route path='finance' element={<Displaycards />} />
@@ -71,7 +72,7 @@ function App() {
               <Route path='form' element={<Productform />} />
               <Route path='main' element={<Main />} />
               <Route path='quiz' element={<Quiz />} />
-              <Route path='interview' element={<InterviewApp />} />
+              <Route path='interview' element={<SocketContextProvider><InterviewApp /></SocketContextProvider>} />
             </Routes>
           </div>
         </UserContext.Provider>

@@ -67,6 +67,7 @@ const Quiz = () => {
   const addLeadingZero = (number) => (number > 9 ? number : `0${number}`);
 
   return (
+    <div className={classes.body}>
     <div className={classes.quizcontainer}>
       <div>
         <span className={classes.activequestionno}>
@@ -110,6 +111,7 @@ const Quiz = () => {
           )}
         </button>
       </div>
+    </div>
     </div>
   );
 };

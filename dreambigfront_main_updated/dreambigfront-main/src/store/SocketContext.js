@@ -1,6 +1,9 @@
-import React, { createContext, useState, useRef, useEffect } from 'react';
+import React, { createContext, useState, useRef, useEffect, useContext } from 'react';
 import { io } from 'socket.io-client';
 import Peer from 'simple-peer';
+import MarksModal from '../screens/Interview/MarksModal';
+import  ReactDOM  from 'react-dom';
+import { Videocontext } from './VideoContext';
 
 const SocketContext = createContext();
 
@@ -9,6 +12,7 @@ const socket = io('http://localhost:5000');
 
 const SocketContextProvider = ({ children }) => {
   const [callAccepted, setCallAccepted] = useState(false);
+  const {modal, setModal} = useContext(Videocontext)
   const [callEnded, setCallEnded] = useState(false);
   const [stream, setStream] = useState();
   const [name, setName] = useState('');
@@ -29,7 +33,8 @@ const SocketContextProvider = ({ children }) => {
         
       });
 
-    socket.on('me', (id) => setMe(id));
+    socket.on('me', (id) => {setMe(id); console.log("Got a Me request")});
+    console.log(me);
 
     socket.on('callUser', ({ from, name: callerName, signal }) => {
       setCall({ isReceivingCall: true, from, name: callerName, signal });
@@ -78,12 +83,17 @@ const SocketContextProvider = ({ children }) => {
     connectionRef.current = peer;
   };
 
-  const leaveCall = () => {
+  function leaveCall (){
+    const isauth = JSON.parse(localStorage.getItem('user'))
+    // if(isauth['uid']==='NGbv1gMH11NJQ8NNtjeQsyw51k53'){
+    //   setModal(true);
+    // }
     setCallEnded(true);
-
+    setModal(true);
     connectionRef.current.destroy();
-
-    window.location.reload();
+    // if(isauth['uid']==='NGbv1gMH11NJQ8NNtjeQsyw51k53'){
+      console.log("Get Lost");
+    //}
   };
 
   return (

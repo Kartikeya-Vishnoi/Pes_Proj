@@ -92,13 +92,15 @@ function Studentitem(props) {
     <li className={classes.item}>
       <Card>
         <div className={classes.space}>
-          <img
+          {props.result===1 && <img
             src="http://cdn.onlinewebfonts.com/svg/img_503190.png"
             className={classes.vid}
             onClick={() => {
               ctx.vididhandler(props.id)
-              navigate("/adminvideo")}}
-          ></img>
+              localStorage.setItem('candidate', props.id)
+              window.open('/interview','_blank')}}
+          ></img>}
+          {props.result!==1 && <div style={{height:"50px"}}></div>}
         </div>
         <div className={classes.complete}>
           <div className={classes.image}>

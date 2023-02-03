@@ -18,8 +18,8 @@ app.get('/', (req, res) => {
 });
 
 io.on("connection", (socket) => {
+	console.log("Got a Connection Request")
 	socket.emit("me", socket.id);
-
 	socket.on("disconnect", () => {
 		socket.broadcast.emit("callEnded")
 	});

@@ -5,6 +5,7 @@ import { Assignment, Phone, PhoneDisabled } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 
 import { SocketContext } from '../../store/SocketContext';
+import MarksModal from './MarksModal';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,11 +39,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Options = ({ children }) => {
-  const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } = useContext(SocketContext);
+  const { me, callAccepted, name, setName, callEnded, leaveCall, callUser, modal, setModal} = useContext(SocketContext);
   const [idToCall, setIdToCall] = useState('');
   const classes = useStyles();
   console.log(me);
-
   return (
     <Container className={classes.container}>
       <Paper elevation={10} className={classes.paper}>

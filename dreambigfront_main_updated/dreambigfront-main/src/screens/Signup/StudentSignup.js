@@ -60,6 +60,8 @@ function StudentSignup(props) {
         bool: -1,
         quiz: 0,
         result: -1,
+        interview: -1,
+        paid: "unpaid",
       }).then(
         await setDoc(doc(db, "userChats", res.user.uid), {}),
         setIsloading(false),

@@ -28,7 +28,6 @@ function Admin(){
 
 return (
     <>
-  
     <h1 className={classes.heading}>Students List</h1>
     <Studentlist list={loadedstuds}/>
     </>

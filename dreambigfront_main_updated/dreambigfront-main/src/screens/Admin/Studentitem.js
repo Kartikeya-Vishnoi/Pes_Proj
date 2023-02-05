@@ -60,9 +60,11 @@ function Studentitem(props) {
       timestamp: props.time,
       twelth: props.PUC,
       email: props.email,
-      course:props.course,
+      course: props.course,
       bool: 1,
       result: -1,
+      interview: -1,
+      paid: "unpaid",
       quiz: true,
     };
     setDoc(docRef, payload);
@@ -78,29 +80,34 @@ function Studentitem(props) {
       status: "You are not eligible to attend the Quiz...",
       studentname: props.name,
       timestamp: props.time,
-      course:props.course,
+      course: props.course,
       twelth: props.PUC,
       email: props.email,
+      interview:-1,
       bool: 0,
       result: -1,
       quiz: false,
+      paid:"unpaid"
     };
     setDoc(docRef, payload);
   }
-  const ctx=useContext(Videocontext)
+  const ctx = useContext(Videocontext);
   return (
     <li className={classes.item}>
       <Card>
         <div className={classes.space}>
-          {props.result===1 && <img
-            src="http://cdn.onlinewebfonts.com/svg/img_503190.png"
-            className={classes.vid}
-            onClick={() => {
-              ctx.vididhandler(props.id)
-              localStorage.setItem('candidate', props.id)
-              window.open('/interview','_blank')}}
-          ></img>}
-          {props.result!==1 && <div style={{height:"50px"}}></div>}
+          {props.result === 1 && (
+            <img
+              src="http://cdn.onlinewebfonts.com/svg/img_503190.png"
+              className={classes.vid}
+              onClick={() => {
+                ctx.vididhandler(props.id);
+                localStorage.setItem("candidate", props.id);
+                window.open("/interview", "_blank");
+              }}
+            ></img>
+          )}
+          {props.result !== 1 && <div style={{ height: "50px" }}></div>}
         </div>
         <div className={classes.complete}>
           <div className={classes.image}>
@@ -145,5 +152,4 @@ function Studentitem(props) {
     </li>
   );
 }
-
 export default Studentitem;

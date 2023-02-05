@@ -39,7 +39,6 @@
     padding-top:30px;
     list-style-type: upper-roman;
     list-style:circle;
-    
 }
 
 .actions{
@@ -56,13 +55,13 @@
     font-weight: 400;
     padding-bottom: 10px;
     letter-spacing: 0.32px;
+    margin-left: 0;
 }
 
 .message .heading{
     width: 100%;
     height: 80px;
     padding: 4px;
-    padding-left: 38%;
     font-family: 'Times New Roman', Times, serif;
     font-weight: 500;
     background-color: rgb(163, 37, 163);

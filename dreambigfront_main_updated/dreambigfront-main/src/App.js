@@ -11,6 +11,8 @@ import Main from "./screens/Quiz/Main";
 import Crowdfunding from './screens/User/Crowdfunding';
 import Guide from './components/Guide';
 import Displaycards from './screens/Finance/displaycards';
+import Payment from './screens/PaymentPortal/PaymentMain';
+import Portal from './screens/PaymentPortal/Portal';
 // import VC from './screens/User/VC';
 import Course from './screens/course/course';
 import Jobs from './recruit/components/Jobs';
@@ -66,12 +68,14 @@ function App() {
               <Route path='admin' element={< Admin/>}/>
               <Route path='guide' element={<Guide />} />
               <Route path='jobportal' element={<Jobs />} />
+              <Route path='payment' element={<Payment/>} />
               <Route path='finance' element={<Displaycards />} />
               <Route path='crowdfunding' element={<Crowdfunding />} />
               <Route path='chat' element={<Chat />} />
               <Route path='form' element={<Productform />} />
               <Route path='main' element={<Main />} />
               <Route path='quiz' element={<Quiz />} />
+              <Route path='portal' element={<Portal />} />
               <Route path='interview' element={<SocketContextProvider><InterviewApp /></SocketContextProvider>} />
             </Routes>
           </div>

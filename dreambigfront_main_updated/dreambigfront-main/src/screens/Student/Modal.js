@@ -19,7 +19,7 @@ function Modal(props) {
       <li>You will recieve the Call at the alloted time from the Admin</li>
     </ul>
     <div className={classes.actions}>
-    <button onClick={() => {navigate('/interview')}} className={classes.button1}>PROCEED</button>
+    <button onClick={() => {window.open("/interview", "_blank");}} className={classes.button1}>PROCEED</button>
     <button onClick={props.closemodal} className={classes.button2}>CLOSE</button>
     </div>
    </div>

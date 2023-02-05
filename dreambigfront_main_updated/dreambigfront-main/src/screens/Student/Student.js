@@ -17,12 +17,15 @@ import { useNavigate } from "react-router-dom";
 import { ChatContext } from "../../store/ChatContext";
 import { QuizContext } from "../../store/QuizContext";
 import Modal from "./Modal";
+import StudentCard from "../../ui/PaymentCard";
 
 function Student() {
   const [status, setStatus] = useState([]);
   const [name, setName] = useState([]);
   const [img, setImg] = useState([]);
   const [bl, setbl] = useState([]);
+  const [interview, setInterview] =useState();
+  const [fee, setFee] =useState();
   const [quiz, setQuiz] = useState(null);
   const [result, setResult] = useState();
   const ctx=useContext(QuizContext);
@@ -70,7 +73,9 @@ function Student() {
     console.log(combinedId);
     navigate("/chat");
   }
-
+  function Pay(){
+    navigate("./payment")
+  }
   useEffect(() => {
     const q = query(collection(db, "students"));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -91,6 +96,8 @@ function Student() {
       setbl(Status[0].bool);
       setQuiz(Status[0].quiz);
       setResult(Status[0].result);
+      setInterview(Status[0].interview);
+      setFee(Status[0].paid)
       console.log(Status[0].course);
       ctx.type=Status[0].course;
       console.log(ctx.type)
@@ -98,25 +105,89 @@ function Student() {
     });
     return () => unsubscribe();
   }, []);
-
-
-  return (
-    <>
+  if(fee==="paid"){
+    return(
+      <div className={classes.cont}>
+      <div className={classes.box}>
       <div className={classes.heading}>
         <p className={classes.name}>Welcome {name}</p>
-        <div className={classes.image}>
-          <img src={img} alt={name}></img>
-        </div>
+      </div>
+     <div className={classes.description}>
+      Dear Student.Congratulations You have blocked your Seat in the College 
       </div>
       <div className={classes.description}>
-        <div>Your status is</div>
-        {status}....
+      You can clear your doubts and queries by contacting the Admin
+      </div>
+      <button className={classes.button} onClick={chathandler}>
+          Contact Admin
+      </button>
+     </div>
+     </div>
+    )
+  }
+
+  if(interview!==-1){
+    return(
+      <div className={classes.cont}>
+      <div className={classes.box}>
+      <div className={classes.heading}>
+        <p className={classes.name}>Welcome {name}</p>
+      </div>
+      
+     {interview === "Pass" ? 
+     <>
+     <div className={classes.description}>
+      Congratulations for clearing the Interview and the Entrance Exam.
+      </div>
+      <div className={classes.description}>
+      Kindly click the button provided to Explore the fees Structure and Payment Details
+      </div>
+      
+      <button className={classes.button1} onClick={() => {navigate("/payment")}}>Fee Details</button>
+      <button className={classes.button} onClick={chathandler}>
+          Contact Admin
+      </button>
+     </>
+     :
+     <>
+      <div className={classes.description}>
+      Dear Student You were not able to clear the cutoff of the Interview and have been disqualified from the Entrance Exam
+      </div>
+      <div className={classes.description}>
+      Best Wishes for your Future ahead
+      </div>
+      <div clasname={classes.actions}>
+      <button className={classes.button} onClick={chathandler}>
+          Contact Admin
+      </button>
+      </div>
+     </>
+    }
+    
+     </div>
+     </div>
+      
+    )
+  }
+
+  return (
+   <div className={classes.cont}>
+    <div className={classes.box}>
+      <div className={classes.heading}>
+        <p className={classes.name}>Welcome {name}</p>
+      </div>
+      <div className={classes.description}>
+        <div style={{"font-family":"'Times New Roman', Times, serif", "margin-bottom":"5vh"}}>Your status is</div>
+        {status}
+        <div style={{"font-family":"'Times New Roman', Times, serif"}}>
+        Kindly Contact the Admin regarding your Interview Schedule
+        </div>
       </div>
       {quiz === 1 ? (
         "Loading"
       ) : quiz === true && result === -1 ? (
         <button
-          className={classes.button2}
+          className={classes.button}
           onClick={() => {
             navigate("/main");
           }}
@@ -131,14 +202,15 @@ function Student() {
         <button className={classes.button} onClick={chathandler}>
           Contact Admin
         </button>
-        <div className={classes.text}>Start your Interview at the alloted time by pressing the Button Below</div>
+        <div className={classes.text} style={{"font-size":"1.8rem", "font-wieght":"bolder", "color":"white"}}>Start your Interview at the alloted time by pressing the Button Below</div>
         <Modal modal={modal} closemodal={() => {setModal(false)}}/>
         <button className={classes.button1} onClick={Interview}>Start Interview</button>
         </div>
       ) : (
         ""
       )}
-    </>
+      </div>
+      </div>
   );
 }
 

@@ -76,7 +76,7 @@ const SocketContextProvider = ({ children }) => {
 
     socket.on('callAccepted', (signal) => {
       setCallAccepted(true);
-
+      
       peer.signal(signal);
     });
 
@@ -91,7 +91,16 @@ const SocketContextProvider = ({ children }) => {
     setCallEnded(true);
     setModal(true);
     connectionRef.current.destroy();
+    stream.getTracks().forEach(track => track.stop())
+    stream.destroy();
+    // let str = myVideo.current.srcObject;
+    // const tracks = str.getTracks();
+    
+    // tracks.forEach(track => track.stop());
+    // myVideo.current.srcObject = null;
+    
     // if(isauth['uid']==='NGbv1gMH11NJQ8NNtjeQsyw51k53'){
+      
       console.log("Get Lost");
     //}
   };

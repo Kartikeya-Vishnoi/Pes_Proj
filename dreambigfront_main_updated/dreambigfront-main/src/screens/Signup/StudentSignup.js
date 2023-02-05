@@ -78,7 +78,7 @@ function StudentSignup(props) {
       value: "null",
     },
     {
-      label: "Batchelor of Engineering",
+      label: "BE",
       value: "be",
     },
     {

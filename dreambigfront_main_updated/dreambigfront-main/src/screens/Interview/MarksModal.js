@@ -28,7 +28,7 @@ function MarksModal(props) {
   return (
     <div className={classes.overlay}>
       <div className={classes.message}>
-        <div className={classes.heading}>Allocate Marks</div>
+        <div className={classes.heading}>Final Result</div>
         <div className={classes.actions}>
           {/* <form> */}
             {/* <input
@@ -57,12 +57,10 @@ function MarksModal(props) {
               }}
             ></div>
             <span style={{ fontSize: "2rem", "margin-left": "10px" }}>/10</span> */}
-            
-
           {/* </form> */}
           <div className={classes.actions}>
-             <button className={classes.button1} onClick={() => setQual("Pass")}>Qualify</button>
-             <button className={classes.button2} onClick={() => setQual("Fail")}>Disqualify</button>
+             <button className={classes.button1} onClick={() => {setQual("Pass"); navigate("/")}}>Qualify</button>
+             <button className={classes.button2} onClick={() => {setQual("Fail"); navigate("/")}}>Disqualify</button>
             </div>
         </div>
         <div className={classes.settle}>
